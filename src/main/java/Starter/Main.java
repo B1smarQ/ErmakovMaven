@@ -1,17 +1,26 @@
 package Starter;
+import beans.BeanConfig;
+import beans.Review;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import Human.Human;
-import annotations.AnnotationProcessors;
-
-import java.lang.reflect.InvocationTargetException;
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, InstantiationException, NoSuchMethodException {
-        Human human = new Human(15,"john",(byte)1);
-        System.out.println(human);
-        AnnotationProcessors.reset(human);
-        System.out.println(human);
-        }
+    public static void main(String[] args) {
+        ApplicationContext context = new AnnotationConfigApplicationContext("beans", "Starter");
+        String str = (String) context.getBean("bean1");
+        System.out.println(str);
+        Integer min = (Integer) context.getBean("min",10);
+        Integer max = (Integer) context.getBean("max",100);
+        System.out.println(context.getBean("bean2"));
+        System.out.println(context.getBean("bean2"));
+
+        Review rev1 = new Review("good",5);
+        Review rev2 = new Review("meh",3);
+        Review rev3 = new Review("dunno",(int)context.getBean("bean2"));
+
+        System.out.println(rev1);
+        System.out.println(rev2);
+        System.out.println(rev3);
+
     }
+}

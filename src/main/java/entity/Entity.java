@@ -19,6 +19,7 @@ public abstract class Entity {
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
+
         }
         return "";
     }
