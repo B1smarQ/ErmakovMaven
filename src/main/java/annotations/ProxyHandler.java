@@ -20,8 +20,6 @@ public class ProxyHandler implements InvocationHandler {
     private void check(){
         Field[] fields = obj.getClass().getFields();
 
-
-
     }
 
     @Override

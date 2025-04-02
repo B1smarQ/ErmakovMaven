@@ -12,7 +12,8 @@ public abstract class Entity {
     private String  findFieldValues(Field field) {
         if(field.isAnnotationPresent(ToString.class) && field.getAnnotation(ToString.class).value() == ToStringValues.NO)
             return "";
-        if(getClass().isAnnotationPresent(ToString.class) ||( field.isAnnotationPresent(ToString.class) && field.getAnnotation(ToString.class).value() == ToStringValues.YES)) {
+        if(getClass().isAnnotationPresent(ToString.class) ||( field.isAnnotationPresent(ToString.class)
+                && field.getAnnotation(ToString.class).value() == ToStringValues.YES)) {
             field.setAccessible(true);
             try {
                 return field.getName() + " = " + field.get(this);
